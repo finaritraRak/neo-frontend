@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #f9fafb;
+    --text-primary: #111827;
+  }
+
+  .dark {
+    --bg-primary: #0f172a;
+    --text-primary: #e2e8f0; 
+    --card-bg: #1e293b; 
+    --border-color: #334155;
+    --input-bg: #1e293b;
+    --hover-bg: #334155;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-[--bg-primary] text-[--text-primary] transition-colors duration-200;
+  }
+}
