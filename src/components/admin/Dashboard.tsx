@@ -60,6 +60,7 @@ export const AdminDashboard = () => {
     const loadSites = async () => {
       setLoading(true);
       try {
+        // ✅ CORRIGÉ : ajout de /api
         const response = await api.get('/api/sites/');
         const sitesList = Array.isArray(response.data) ? response.data : [];
         setSites(sitesList);
@@ -81,7 +82,8 @@ export const AdminDashboard = () => {
 
     const loadData = async () => {
       try {
-        const energyRes = await api.get('/energy/readings/', {
+        // ✅ CORRIGÉ : ajout de /api
+        const energyRes = await api.get('/api/energy/readings/', {
           params: { site: selectedSite, ordering: '-timestamp', page_size: 500 }
         });
         let energyReadings: EnergyReading[] = [];
@@ -91,7 +93,8 @@ export const AdminDashboard = () => {
           energyReadings = energyRes.data.results;
         }
 
-        const alarmsRes = await api.get('/alarms/', {
+        // ✅ CORRIGÉ : ajout de /api
+        const alarmsRes = await api.get('/api/alarms/', {
           params: { site: selectedSite, is_active: 'true' }
         });
         let alarms: Alarm[] = [];
